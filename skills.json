@@ -1,0 +1,21 @@
+{
+  "name": "Шкода Ярослав",
+  "role": "Промпт-инженер",
+  "technical_skills": [
+    "Prompt Engineering",
+    "LLM (KIMI K2, GLM-4.5, Qwen-3-235B, Qwen3-coder, Deepseek, Claude, Llama)",
+    "JSON",
+    "SQL (базовый уровень)",
+    "Python (обработка текста, API)",
+    "Составление баг-репортов"
+  ],
+  "soft_skills": [
+    "Аналитическое мышление",
+    "Быстрое обучение",
+    "Логика",
+    "Внимание к деталям"
+  ],
+  "work_format": "удалённо",
+  "employment": "проектная работа",
+  "ready_for_test_task": true
+}
