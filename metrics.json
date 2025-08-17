@@ -1,0 +1,6 @@
+{
+  "text_analysis": {"f1_before": 0.73, "f1_after": 0.96},
+  "glm_optimize":  {"tokens_before": 1200, "tokens_after": 708, "accuracy": 0.96},
+  "sql_gen":       {"queries": 18, "errors": 0},
+  "auto_reports":  {"time_before_h": 6, "time_after_h": 1.5}
+}

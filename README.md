@@ -1,23 +1,26 @@
-# Привет! Я — промпт-инженер
+## 🌍 Open to remote | Prompt-Engineer
 
-## Обо мне
-Самообучившийся промпт-инженер с опытом работы с GPT, Claude, KIMI K2, GLM-4.5, Qwen-3-235B, 
-Qwen3-coder, Deepseek и Llama. Умею писать, тестировать и оптимизировать промпты, 
-анализировать вывод ИИ и структурировать данные в JSON.
+**+32 % точности, –41 % токенов, –75 % времени на отчёты** за 90 дней самообучения.
 
-## Навыки
-- Prompt Engineering
-- Работа с LLM (GPT-4, Claude 3, Llama 2, KIMI K2, GLM-4.5, Qwen-3-235B, Qwen3-coder, 
-Deepseek)
-- Анализ данных
-- JSON, SQL (базовый)
-- Python (обработка текста, API)
-- Составление баг-репортов
+### ⚡ 3 факта за 30 секунд
+- 6 pet-проектов → [GitHub](./projects)  
+- 18 SQL-запросов, 96 % точность GLM-4.5  
+- готов к тестовому заданию за 1 день  
 
-## Проекты
-1. [Анализ текста с помощью промптов](/projects/text_analysis.md)
-2. [Генерация баг-репортов через ИИ](/projects/bug_report_generator.md)
+### 🛠 Стек
+![JSON](https://img.shields.io/badge/JSON-20232A?style=flat&logo=json&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-336791?style=flat&logo=postgresql&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+![GLM-4.5](https://img.shields.io/badge/GLM--4.5-44A831?style=flat&logo=data:image/svg+xml;base64,PHN2Zy8+)
 
-## Контакты
-- Email: dr.shkoda98@yndex.ru
-- Telegram: @shkoda_y
+### 📊 Последние проекты
+| Проект | Метрика | Код |
+|--------|---------|-----|
+| **Анализ текста** | F1 ↑ 0.32 → 0.96 | [📓 Notebook](./projects/text_analysis/) |
+| **Оптимизация GLM-4.5** | токены –41 % | [🧪 Prompts](./projects/glm_optimize/) |
+| **SQL-генерация** | 18 запросов, 0 ошибок | [🗃️ Code](./projects/sql_gen/) |
+
+### 📞 Контакты
+- 📧 [dr.shkoda98@yandex.ru](mailto:dr.shkoda98@yandex.ru)  
+- ✈️ [@shkoda_y](https://t.me/shkoda_y)
