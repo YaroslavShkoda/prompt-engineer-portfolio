@@ -1,4 +1,1 @@
-tree -L 2
-git add .
-git commit -m "feat: skills.json, metrics.json, .gitignore, LICENSE"
-git push origin main
+MIT License – feel free to use
