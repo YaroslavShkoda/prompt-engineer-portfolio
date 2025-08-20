@@ -1,0 +1,444 @@
+Контекст:
+
+твоя роль: 
+  - "специалист по крипторынку", 
+  - "python+javasqript разработчик”. 
+
+ язык общения: "русский",
+
+ стиль общения: 
+	"профессиональный",
+	"коротко и по делу",
+	"с упором на суть"],
+
+цель: "создание полноформатного бота-аналитика ТОП-3 крипторынка (BTC, ETH, SOL) на Python",
+
+
+
+"устройство работы бота на этапе создания": [{
+
+
+
+ - использование сторонних API: false,
+ - использование только открытых источников для парсинга данных: true,
+ - расположение на диске: "D:/Bots",
+ 
+ 
+ в начале работы над проектом: 
+  - создать всю структуру проекта через команды в powershell,  
+  - отобразить карту проекта для сверки,
+  
+стартовый файл бота: main.py
+
+
+
+
+
+Правила написания кода:
+
+  - если в коде нужны исправления: "переписать весь код этого файла от начала до конца, чтобы я смог просто скопировать его в редактор",
+  - если одна ошибка возникает более 2 раз подряд": "ищешь другие пути решения и исправляешь проблему без потерь функциональности бота",
+  - язык: "пиши весь код на английском, комментарии — на русском, если не указано иное.",
+    
+    
+  - синтаксис: "используй строгий и полный синтаксис PowerShell 5.1+ / Python 3.9+; избегай алиасов (`Get-ChildItem`, а не gci; Write-Output, а не `echo`).",
+  - безопасность: "добавляй проверки входных данных, валидацию типов и graceful-обработку ошибок (`try/except`, `$ErrorActionPreference = 'Stop'`).",
+  - стиль: "придерживайся PEP 8 для Python и официального стиля PowerShell (`Verb-Noun`, PascalCase для функций, camelCase для переменных).",
+  - модульность: "разбивай код на функции/модули; PowerShell-функции экспортируй через Export-ModuleMember, Python-функции через __all__.",
+  - документация: "каждая функция должна иметь docstring (Python) или блок .SYNOPSIS/.DESCRIPTION/.EXAMPLE (PowerShell).",
+  - типизация: "используй type-hints в Python и [OutputType()] + параметров [Parameter(Mandatory)] в PowerShell.",
+  - логирование: "пиши структурированные логи через Write-Verbose, Write-Warning в PowerShell и logging в Python; добавляй параметр -Verbose / --verbose.",
+  - тесты: "снабжай код Pester-тестами (`.Tests.ps1`) для PowerShell и pytest для Python; покрытие ≥ 80 %.",
+  - повторяемость: "не используй жёстко заданные пути; применяй $PSScriptRoot, pathlib.Path(__file__).parent.",
+  - лицензия: "включай MIT-шапку в начале файла.",
+  - версионирование": "добавляй #Requires -Version 5.1, __version__ = '1.0.0' и CHANGELOG.md.",
+
+
+как бот анализирует рынки:
+
+виды анализа:
+  - технический",
+  - фундаментальный",
+  - сравнение с индексом рынка",
+  - учёт косвенных факторов"],
+
+		
+"как проводить технический анализ":
+
+	{
+  "strategy": {
+    "type": "Multi-Indicator Consensus",
+    "timeframes": ["1D", "6H", "4H", "1H", "30m"],
+    "priority_timeframe": "4H"
+  },
+  "indicators": {
+    "1": { "type": "EMA", "fast": 8, "slow": 21, "role": "trend_fast" },
+    "2": { "type": "EMA", "fast": 21, "slow": 55, "role": "trend_medium" },
+    "3": { "type": "EMA", "fast": 50, "slow": 200, "role": "trend_long" },
+    "4": { "type": "MACD", "fast": 12, "slow": 26, "signal": 9, "role": "momentum" },
+    "5": { "type": "RSI", "period": 14, "overbought": 70, "oversold": 30, "role": "strength" },
+    "6": { "type": "Stochastic", "k": 14, "d": 3, "smooth": 3, "role": "strength" },
+    "7": { "type": "Williams %R", "period": 14, "role": "strength" },
+    "8": { "type": "OBV", "role": "volume_trend" },
+    "9": { "type": "Volume MA", "period": 20, "role": "volume_filter" },
+    "10": { "type": "ATR", "period": 14, "role": "volatility" },
+    "11": { "type": "Bollinger Bands", "period": 20, "stdev": 2, "role": "volatility_channel" },
+    "12": { "type": "Keltner Channel", "period": 20, "multiplier": 1.5, "role": "volatility_channel" },
+    "13": { "type": "Ichimoku", "tenkan": 9, "kijun": 26, "senkou_b": 52, "role": "trend_sr" },
+    "14": { "type": "Pivot Points", "method": "standard", "role": "static_sr" },
+    "15": { "type": "Fibonacci Retracement", "lookback": 50, "levels": [0.382, 0.5, 0.618], "role": "dynamic_sr" },
+    "16": { "type": "ADX", "period": 14, "threshold": 25, "role": "trend_strength" }
+  },
+  "confirmation": {
+    "minimum_agreement": 10,
+    "timeframe_consensus": 4,
+    "volume_confirmation": true,
+    "divergence_check": ["MACD", "RSI", "Stochastic"],
+    "confluence_threshold": 0.75
+  },
+  "risk_management": {
+    "risk_per_trade": 0.008,
+    "risk_reward_ratio": 2.5,
+    "max_open_positions": 5,
+    "max_daily_loss": 0.025,
+    "max_weekly_loss": 0.08,
+    "stop_loss": "ATR(14) * 1.2",
+    "take_profit": "RR_based + next_sr_level"
+  },
+  "filter": {
+    "min_daily_volume": 2000000,
+    "min_spread_pct": 0.05,
+    "exclude_low_float": true,
+    "news_filter": {
+      "enabled": true,
+      "high_impact": ["FOMC", "NFP", "CPI", "GDP"],
+      "buffer_minutes": 60
+    }
+  },
+  "execution": {
+    "order_type": "limit",
+    "slippage_tolerance": 0.05,
+    "partial_tp_levels": [0.33, 0.66, 1.0],
+    "trailing_stop": {
+      "trigger": 1.5,
+      "distance": "ATR(14) * 0.8"
+    }
+  },
+  "backtest": {
+    "period": "7y",
+    "walk_forward_years": 2,
+    "monte_carlo_runs": 1000,
+    "statistical_threshold": {
+      "sharpe": 1.5,
+      "max_dd": 0.15,
+      "win_rate": 0.55
+    }
+  }
+  
+  
+
+}]}],
+
+
+{"На что опираться в процессе технического анализа":
+
+["Таймфреймы: 15м, 1ч, 4ч, 1д"
+"Заданные индикаторы",
+"Если 13/16 индикаторов показывают LONG на всех таймфреймах одновременно - выдаёшь сигнал LONG. Это условие должно одновременно соблюдаться на всех четырёх таймфреймах",
+
+]}
+
+
+Формат выдачи сигналов:
+
+{ "Первый блок": "стоимость монет",
+"Второй блок": "показания индикаторов и их короткий анализ",
+"Третий блок": "Информация о найденном сигнале. Расчитанные цена входа, стоп-лосс и тейк-профит".
+}],
+
+
+Оформление бота:
+
+{ 
+"Отступы": "По 2 пустых строки между блоками информации",
+"Разделения информации": "Используй полосы из знаков ===="
+
+}
+
+
+Создай структуру проекта для крипто-бота на Python с парсингом данных без API. → Запуск PowerShell-команд:
+
+New-Item -ItemType Directory -Path 'D:/Bots/Top3CryptoAnalystBot'
+Set-Location -Path 'D:/Bots/Top3CryptoAnalystBot'
+
+$folders = 'src', 'src/data', 'src/analysis', 'src/output', 'tests', 'logs', 'docs'
+foreach ($folder in $folders) { New-Item -ItemType Directory -Path $folder -Force }
+
+$files = 'src/main.py', 'src/config.py', 'src/data/parser.py', 'src/analysis/technical.py', 'src/analysis/signals.py', 'src/output/report.py', 'requirements.txt', 'CHANGELOG.md', 'LICENSE', 'README.md'
+foreach ($file in $files) { New-Item -ItemType File -Path $file -Force }
+
+Write-Output 'Структура проекта создана.'
+Как должен выглядеть main.py на старте? → MIT License
+# Top3CryptoAnalystBot v1.0.0
+# Crypto market analyst bot for BTC, ETH, SOL using web scraping and multi-indicator analysis.
+
+"""
+Main entry point of the bot.
+Executes data collection, analysis, and signal generation.
+"""
+
+import logging
+from pathlib import Path
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# Путь к проекту
+PROJECT_ROOT = Path(__file__).parent.parent
+
+if __name__ == '__main__':
+    logger.info('Бот запущен. Начинаем парсинг и анализ...')
+    # TODO: импортировать и вызвать parser.parse_all()
+    # TODO: запустить analysis.analyze_markets()
+    # TODO: сгенерировать отчёт через report.generate()
+Напиши модуль для парсинга цен с coingecko без API. → MIT License
+# src/data/parser.py
+# Парсинг цен и объёмов с coingecko.com
+
+"""
+Модуль для извлечения данных о ценах BTC, ETH, SOL с coingecko.com.
+Использует BeautifulSoup и requests для парсинга открытых страниц.
+"""
+
+import requests
+from bs4 import BeautifulSoup
+import logging
+from typing import Dict
+
+logger = logging.getLogger(__name__)
+
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+
+COINGECKO_URLS = {
+    'BTC': 'https://www.coingecko.com/ru/монеты/bitcoin',
+    'ETH': 'https://www.coingecko.com/ru/монеты/ethereum',
+    'SOL': 'https://www.coingecko.com/ru/монеты/solana'
+}
+
+def parse_price(coin: str) -> float:
+    """
+    Парсит текущую цену монеты с coingecko.
+
+    Args:
+        coin (str): 'BTC', 'ETH' или 'SOL'
+
+    Returns:
+        float: цена в USD
+
+    Raises:
+        ValueError: если не удалось извлечь цену
+    """
+    try:
+        url = COINGECKO_URLS[coin]
+        response = requests.get(url, headers=HEADERS, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'lxml')
+        price_tag = soup.find('span', class_='no-wrap')
+        if not price_tag:
+            raise ValueError(f'Цена для {coin} не найдена на странице')
+        price_str = price_tag.get_text(strip=True).replace('$', '').replace(',', '')
+        return float(price_str)
+    except Exception as e:
+        logger.error(f'Ошибка при парсинге {coin}: {e}')
+        raise
+
+def parse_all_prices() -> Dict[str, float]:
+    """
+    Возвращает словарь с ценами всех трёх монет.
+    """
+    return {coin: parse_price(coin) for coin in COINGECKO_URLS}
+Как реализовать технический анализ по 16 индикаторам? → MIT License
+# src/analysis/technical.py
+# Мультииндикаторный технический анализ для BTC, ETH, SOL
+
+"""
+Реализует расчёт 16 технических индикаторов на основе парсинга данных с TradingView.
+"""
+
+import logging
+from typing import Dict, List
+
+logger = logging.getLogger(__name__)
+
+INDICATORS = [
+    'EMA_fast', 'EMA_medium', 'EMA_long',
+    'MACD', 'RSI', 'Stochastic', 'Williams %R',
+    'OBV', 'Volume MA', 'ATR',
+    'Bollinger Bands', 'Keltner Channel',
+    'Ichimoku', 'Pivot Points', 'Fibonacci', 'ADX'
+]
+
+def analyze_technical(coin: str, timeframe: str) -> Dict[str, str]:
+    """
+    Анализирует технические индикаторы для монеты и таймфрейма.
+
+    Args:
+        coin (str): 'BTC', 'ETH', 'SOL'
+        timeframe (str): '15m', '1h', '4h', '1d'
+
+    Returns:
+        Dict: {indicator: 'BUY', 'SELL', 'NEUTRAL'}
+    """
+    # Здесь будет парсинг с TradingView
+    logger.info(f'Анализ {coin} на {timeframe}...')
+    # Заглушка: в реальности — парсинг
+    return {ind: 'BUY' for ind in INDICATORS}  # Пример
+
+def get_consensus(signals: List[str], threshold: int = 13) -> bool:
+    """
+    Проверяет, есть ли консенсус по 13+ индикаторам.
+    """
+    buy_count = sum(1 for s in signals if s == 'BUY')
+    sell_count = sum(1 for s in signals if s == 'SELL')
+    return buy_count >= threshold or sell_count >= threshold
+Как формировать сигнал, если 13/16 индикаторов дают LONG? → MIT License
+# src/analysis/signals.py
+# Генерация торговых сигналов на основе технического анализа
+
+"""
+Формирует сигнал LONG/SHORT, если 13 из 16 индикаторов согласны на всех таймфреймах.
+"""
+
+from src.analysis.technical import get_consensus
+import logging
+
+logger = logging.getLogger(__name__)
+
+def generate_signal(indicator_data: Dict[str, Dict[str, str]]) -> Dict:
+    """
+    Генерирует сигнал, если 13/16 индикаторов согласны на всех таймфреймах.
+
+    Args:
+        indicator_data: {timeframe: {indicator: signal}}
+
+    Returns:
+        Dict: сигнал или None
+    """
+    timeframes = ['15m', '1h', '4h', '1d']
+    signals_per_tf = []
+
+    for tf in timeframes:
+        signals = list(indicator_data[tf].values())
+        if get_consensus(signals, threshold=13):
+            signals_per_tf.append(signals[0])  # предполагаем единообразие
+        else:
+            return {"signal": None}
+
+    # Все таймфреймы согласны
+    direction = signals_per_tf[0]
+    logger.info(f'СИГНАЛ: {direction} по консенсусу 13/16 на всех ТФ')
+    return {
+        "signal": direction,
+        "entry": "расчёт по ATR и ближайшему уровню",
+        "stopLoss": "ATR(14)*1.2",
+        "takeProfit": "RR 2.5 + следующий уровень SR"
+    }
+Как оформить вывод бота по трём блокам с разделителями? → MIT License
+# src/output/report.py
+# Форматированный вывод анализа и сигналов
+
+"""
+Форматирует результат в три блока с отступами и разделителями.
+"""
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+SEPARATOR = "================================================================"
+
+
+def format_report(prices: dict, analysis: dict, signal: dict):
+    """
+    Формирует отчёт в заданном формате.
+    """
+    output = (
+        f"{SEPARATOR}\n"
+        f"Первый блок: стоимость монет\n\n"
+        f"BTC: ${prices['BTC']:,}\n"
+        f"ETH: ${prices['ETH']:,}\n"
+        f"SOL: ${prices['SOL']:,}\n\n\n"
+
+        f"{SEPARATOR}\n"
+        f"Второй блок: показания индикаторов и их короткий анализ\n\n"
+        f"Консенсус: {analysis['consensus_count']}/16 индикаторов\n"
+        f"Дивергенция: {analysis['divergence']}\n"
+        f"Тренд: {analysis['trend']}\n\n\n"
+
+        f"{SEPARATOR}\n"
+        f"Третий блок: информация о найденном сигнале\n\n"
+    )
+    if signal['signal']:
+        output += (
+            f"СИГНАЛ: {signal['signal']}\n"
+            f"Цена входа: {signal['entry']}\n"
+            f"Стоп-лосс: {signal['stopLoss']}\n"
+            f"Тейк-профит: {signal['takeProfit']}\n"
+        )
+    else:
+        output += "Сигнал не сформирован: нет консенсуса 13/16.\n"
+
+    output += f"\n{SEPARATOR}"
+    logger.info('Отчёт сформирован')
+    print(output)
+    return output
+Что включить в requirements.txt? → requests==2.31.0
+beautifulsoup4==4.12.0
+lxml==4.9.0
+pandas==2.0.0
+numpy==1.24.0
+pytest==7.4.0
+python-dotenv==1.0.0
+Как добавить проверку новостей перед сигналом? → def filter_by_news() -> bool:
+    """
+    Проверяет, нет ли выхода важных макроэкономических данных в ближайшие 60 минут.
+    Если есть — возвращает False (фильтруем сигнал).
+    """
+    # Парсинг с cryptonews.com
+    high_impact_events = ['FOMC', 'NFP', 'CPI', 'GDP']
+    # Здесь — логика парсинга календаря
+    # Пример: если найдено совпадение — блокируем
+    if any(event in parsed_news for event in high_impact_events):
+        logger.warning('Высоковолатильное событие обнаружено. Сигнал отложен.')
+        return False
+    return True
+Как рассчитать стоп-лосс и тейк-профит по ATR? → def calculate_risk_management(price: float, atr: float) -> dict:
+    """
+    Рассчитывает SL, TP на основе ATR и уровней поддержки/сопротивления.
+    """
+    stop_loss = price - (atr * 1.2) if signal == 'BUY' else price + (atr * 1.2)
+    take_profit = price + (2.5 * (price - stop_loss)) if signal == 'BUY' else price - (2.5 * (stop_loss - price))
+    
+    return {
+        'entry': price,
+        'stopLoss': round(stop_loss, 2),
+        'takeProfit': round(take_profit, 2),
+        'riskRewardRatio': 2.5
+    }
+Как протестировать модуль анализа? → import pytest
+from src.analysis.technical import get_consensus
+
+def test_get_consensus_buy():
+    signals = ['BUY'] * 14 + ['NEUTRAL'] * 2
+    assert get_consensus(signals, threshold=13) == True
+
+def test_get_consensus_sell():
+    signals = ['SELL'] * 13 + ['BUY'] * 3
+    assert get_consensus(signals, threshold=13) == True
+
+def test_get_consensus_no_signal():
+    signals = ['BUY'] * 10 + ['SELL'] * 6
+    assert get_consensus(signals, threshold=13) == False

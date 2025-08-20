@@ -1,10 +1,10 @@
+
 import json
 import yaml
 import os
 from jinja2 import Environment, FileSystemLoader
 
-# --- Основные настройки ---
-# Имя файла конфигурации. Мы предполагаем, что он лежит в корне проекта.
+
 CONFIG_FILE_NAME = "config.json"
 
 def load_config(config_path):
