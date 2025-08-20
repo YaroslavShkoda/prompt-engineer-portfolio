@@ -1,0 +1,289 @@
+# moexbot_prompt.yaml
+# Промпт для ИИ: создание бота-аналитика ТОП-10 Московской биржи
+
+meta:
+  version: 1.0.0
+  author: shkoda_y
+  license: MIT
+  created: 2025-04-05
+  purpose: "Инструкция для ИИ по созданию полноценного бота-аналитика MOEX на Python"
+
+project:
+  name: MOEXbot
+  goal: "Создать автономного бота-аналитика ТОП-10 акций Московской биржи"
+  requirements:
+    - "Работает только на открытых источниках (без API)"
+    - "Цикл анализа — каждые 15 минут"
+    - "Генерация сигналов по консенсусу 13/16 индикаторов"
+    - "Формат вывода — три блока: цены, анализ, сигнал"
+    - "Логирование в файл и консоль"
+    - "Модульность, PEP 8, type hints, тесты"
+
+structure:
+  root: MOEXbot/
+  folders:
+    src:
+      files:
+        - main.py
+        - data_parser.py
+        - technical_analyzer.py
+        - signal_generator.py
+        - logger.py
+        - __init__.py
+    config:
+      files:
+        - indicators.json
+        - strategy.json
+    logs:
+      files:
+        - moexbot.log
+    data:
+      subfolder: raw/
+      files:
+        - latest_prices.html
+    outputs:
+      subfolder: signals/
+      files:
+        - latest.json
+    tests:
+      files:
+        - test_data_parser.py
+        - test_technical_analyzer.py
+        - conftest.py
+  files:
+    - requirements.txt
+    - .gitignore
+    - LICENSE
+    - CHANGELOG.md
+    - README.md
+
+specifications:
+  language: Python 3.9+
+  coding_style:
+    code_language: english
+    comments_language: russian
+    standard: PEP 8
+    type_hints: true
+    modularity: true
+  error_handling: "try/except, validation, graceful degradation"
+  paths: "Use pathlib.Path, no hardcoded paths"
+  logging:
+    module: logging
+    format: "%(asctime)s - %(levelname)s - %(message)s"
+    level: INFO
+    output:
+      - console
+      - logs/moexbot.log
+
+modules:
+  data_parser:
+    description: "Парсинг ТОП-10 тикеров и цен с открытых источников"
+    functions:
+      fetch_top10_tickers:
+        returns: List[str]
+        behavior: "Динамически получает ТОП-10 по обороту, не статично"
+      fetch_latest_prices:
+        params: tickers: List[str]
+        returns: Dict[str, float]
+        behavior: "Возвращает актуальные цены с шумом ±2%"
+    source: "HTML/CSV — только открытые источники, без API"
+
+  technical_analyzer:
+    description: "Технический анализ по 16 индикаторам на 4 таймфреймах"
+    timeframes: ["15m", "1h", "4h", "1d"]
+    priority_timeframe: "4h"
+    indicators:
+      - type: EMA
+        fast: 8
+        slow: 21
+        role: trend_fast
+      - type: EMA
+        fast: 21
+        slow: 55
+        role: trend_medium
+      - type: EMA
+        fast: 50
+        slow: 200
+        role: trend_long
+      - type: MACD
+        fast: 12
+        slow: 26
+        signal: 9
+        role: momentum
+      - type: RSI
+        period: 14
+        overbought: 70
+        oversold: 30
+        role: strength
+      - type: Stochastic
+        k: 14
+        d: 3
+        smooth: 3
+        role: strength
+      - type: "Williams %R"
+        period: 14
+        role: strength
+      - type: OBV
+        role: volume_trend
+      - type: "Volume MA"
+        period: 20
+        role: volume_filter
+      - type: ATR
+        period: 14
+        role: volatility
+      - type: "Bollinger Bands"
+        period: 20
+        stdev: 2
+        role: volatility_channel
+      - type: "Keltner Channel"
+        period: 20
+        multiplier: 1.5
+        role: volatility_channel
+      - type: Ichimoku
+        tenkan: 9
+        kijun: 26
+        senkou_b: 52
+        role: trend_sr
+      - type: "Pivot Points"
+        method: standard
+        role: static_sr
+      - type: "Fibonacci Retracement"
+        lookback: 50
+        levels: [0.382, 0.5, 0.618]
+        role: dynamic_sr
+      - type: ADX
+        period: 14
+        threshold: 25
+        role: trend_strength
+    confirmation:
+      minimum_agreement: 13
+      timeframe_consensus: 4
+      volume_confirmation: true
+      divergence_check: ["MACD", "RSI", "Stochastic"]
+      confluence_threshold: 0.75
+    function:
+      name: analyze_ticker
+      params: symbol: str
+      returns: Dict[str, Tuple[int, int, str]]
+      description: "Возвращает (BUY_count, SELL_count, signal) по таймфреймам"
+
+  signal_generator:
+    description: "Генерация сигнала при консенсусе ≥13/16 индикаторов"
+    output_format: |
+      ============================================================
+                СТОИМОСТЬ АКТИВОВ
+
+      SBER: 305.50 руб.
+      GAZP: 152.80 руб.
+      ...
+
+      ============================================================
+           ПОКАЗАНИЯ ИНДИКАТОРОВ И ИХ АНАЛИЗ
+
+      📊 ТОП-1: SBER
+        • 15m: 14/16 BUY, 2/16 SELL → 🟢 СИЛЬНЫЙ КОНСЕНСУС: ПОКУПКИ
+        • 1h: 13/16 BUY, 3/16 SELL → 🟢 Устойчивый рост
+        • 4h: 14/16 BUY, 2/16 SELL → 🟢 СИЛЬНЫЙ КОНСЕНСУС
+        • 1d: 12/16 BUY, 4/16 SELL → 🟢 Рост
+        ──────────────────────────────
+        🟢 Устойчивый рост
+
+      ...
+
+      ============================================================
+         ИНФОРМАЦИЯ О НАЙДЕННОМ СИГНАЛЕ
+
+      ✅ СИГНАЛ ПОКУПКИ: SBER
+      Цена входа: 305.50 руб.
+      Стоп-лосс: 299.39 руб.
+      Тейк-профит: 320.78 руб.
+      ============================================================
+    function:
+      name: generate_signal
+      params: analysis: Dict, prices: Dict[str, float]
+      returns: str
+      behavior: "Формирует 3 блока с отступами и полосами ===="
+
+  logger:
+    description: "Настройка логгера"
+    function:
+      name: setup_logger
+      params: log_file: str = "logs/moexbot.log"
+      returns: logging.Logger
+      behavior: "Добавляет обработчики для файла и консоли"
+
+  main:
+    description: "Точка входа. Запускает цикл каждые 15 минут"
+    entry_point: "python -m src.main"
+    logic:
+      - "Получить ТОП-10 тикеров"
+      - "Получить цены"
+      - "Провести анализ по каждому тикеру"
+      - "Сгенерировать сигнал"
+      - "Залогировать и вывести"
+    loop_interval: 900  # seconds
+
+config_files:
+  indicators.json:
+    path: config/indicators.json
+    content: |
+      {
+        "indicators": [
+          { "type": "EMA", "fast": 8, "slow": 21 },
+          { "type": "MACD", "fast": 12, "slow": 26, "signal": 9 },
+          ...
+        ],
+        "timeframes": ["15m", "1h", "4h", "1d"],
+        "priority_timeframe": "4h"
+      }
+  strategy.json:
+    path: config/strategy.json
+    content: |
+      {
+        "confirmation": { "minimum_agreement": 13 },
+        "risk_management": {
+          "risk_per_trade": 0.008,
+          "risk_reward_ratio": 2.5
+        }
+      }
+
+tests:
+  framework: pytest
+  coverage: "≥ 80%"
+  files:
+    - test_data_parser.py
+    - test_technical_analyzer.py
+  examples:
+    - |
+      def test_fetch_top10_tickers():
+          tickers = fetch_top10_tickers()
+          assert isinstance(tickers, list)
+          assert len(tickers) == 10
+    - |
+      def test_analyze_ticker():
+          result = analyze_ticker("SBER")
+          assert "4h" in result
+          assert result["4h"][0] >= 0
+
+dependencies:
+  requirements.txt: |
+    requests==2.31.0
+    beautifulsoup4==4.12.3
+    pandas==2.2.2
+    numpy==1.26.4
+    pytest==8.1.1
+  .gitignore: |
+    __pycache__/
+    *.pyc
+    logs/moexbot.log
+    data/raw/*
+    outputs/signals/*
+    .env
+    .pytest_cache/
+
+final_instruction: |
+  Ты — опытный разработчик и промпт-инженер.
+  На основе этого YAML-промпта создай полный проект MOEXbot.
+  Напиши весь код, соблюдай PEP 8, type hints, модульность.
+  Комментарии — на русском.
+  Начни с: "Я проанализировал YAML-промпт. Вот как будет реализован MOEXbot..."

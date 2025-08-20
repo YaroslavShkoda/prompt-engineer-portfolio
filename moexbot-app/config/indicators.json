@@ -1,0 +1,139 @@
+{
+  "indicators": [
+    {
+      "id": 1,
+      "type": "EMA",
+      "fast": 8,
+      "slow": 21,
+      "role": "trend_fast",
+      "description": "Быстрая скользящая средняя для краткосрочного тренда"
+    },
+    {
+      "id": 2,
+      "type": "EMA",
+      "fast": 21,
+      "slow": 55,
+      "role": "trend_medium",
+      "description": "Среднесрочная EMA для подтверждения направления"
+    },
+    {
+      "id": 3,
+      "type": "EMA",
+      "fast": 50,
+      "slow": 200,
+      "role": "trend_long",
+      "description": "Долгосрочный тренд («Грейтест»)"
+    },
+    {
+      "id": 4,
+      "type": "MACD",
+      "fast": 12,
+      "slow": 26,
+      "signal": 9,
+      "role": "momentum",
+      "description": "Дивергенция и импульс"
+    },
+    {
+      "id": 5,
+      "type": "RSI",
+      "period": 14,
+      "overbought": 70,
+      "oversold": 30,
+      "role": "strength",
+      "description": "Перекупленность/перепроданность"
+    },
+    {
+      "id": 6,
+      "type": "Stochastic",
+      "k": 14,
+      "d": 3,
+      "smooth": 3,
+      "role": "strength",
+      "description": "Моментум на основе диапазона цен"
+    },
+    {
+      "id": 7,
+      "type": "Williams %R",
+      "period": 14,
+      "role": "strength",
+      "description": "Измеряет положение цены относительно максимума"
+    },
+    {
+      "id": 8,
+      "type": "OBV",
+      "role": "volume_trend",
+      "description": "Объёмный поток (On-Balance Volume)"
+    },
+    {
+      "id": 9,
+      "type": "Volume MA",
+      "period": 20,
+      "role": "volume_filter",
+      "description": "Скользящая средняя по объёму"
+    },
+    {
+      "id": 10,
+      "type": "ATR",
+      "period": 14,
+      "role": "volatility",
+      "description": "Средний истинный диапазон — волатильность"
+    },
+    {
+      "id": 11,
+      "type": "Bollinger Bands",
+      "period": 20,
+      "stdev": 2,
+      "role": "volatility_channel",
+      "description": "Канал на основе стандартного отклонения"
+    },
+    {
+      "id": 12,
+      "type": "Keltner Channel",
+      "period": 20,
+      "multiplier": 1.5,
+      "role": "volatility_channel",
+      "description": "Канал на основе ATR"
+    },
+    {
+      "id": 13,
+      "type": "Ichimoku",
+      "tenkan": 9,
+      "kijun": 26,
+      "senkou_b": 52,
+      "role": "trend_sr",
+      "description": "Полный индикатор: тренд, поддержка, сопротивление"
+    },
+    {
+      "id": 14,
+      "type": "Pivot Points",
+      "method": "standard",
+      "role": "static_sr",
+      "description": "Классические уровни поддержки и сопротивления"
+    },
+    {
+      "id": 15,
+      "type": "Fibonacci Retracement",
+      "lookback": 50,
+      "levels": [0.382, 0.5, 0.618],
+      "role": "dynamic_sr",
+      "description": "Уровни Фибоначчи по последнему движению"
+    },
+    {
+      "id": 16,
+      "type": "ADX",
+      "period": 14,
+      "threshold": 25,
+      "role": "trend_strength",
+      "description": "Сила тренда (без направления)"
+    }
+  ],
+  "timeframes": ["15m", "1h", "4h", "1d"],
+  "priority_timeframe": "4h",
+  "confirmation": {
+    "minimum_agreement": 13,
+    "timeframe_consensus": 4,
+    "volume_confirmation": true,
+    "divergence_check": ["MACD", "RSI", "Stochastic"],
+    "confluence_threshold": 0.75
+  }
+}
