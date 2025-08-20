@@ -67,7 +67,6 @@
 
 -   **Email:** [dr.shkoda98@yandex.ru](mailto:dr.shkoda98@yandex.ru)
 -   **Telegram:** [@shkoda_y](https://t.me/shkoda_y)
--   **LinkedIn:** [Yaroslav Shkoda](https://linkedin.com/in/yaroslav-shkoda) *(добавьте, если есть профиль)*
 -   **GitHub:** [YaroslavShkoda](https://github.com/YaroslavShkoda)
 
 ---
