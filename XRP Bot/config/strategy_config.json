@@ -1,0 +1,140 @@
+{
+  "bot": {
+    "name": "XRP-HFT-Bot",
+    "version": "1.0.0",
+    "symbol": "XRPUSDT",
+    "base_currency": "XRP",
+    "quote_currency": "USDT"
+  },
+  "timeframes": {
+    "1D": {"weight": 0.4, "priority": 1},
+    "4H": {"weight": 0.3, "priority": 2},
+    "1H": {"weight": 0.2, "priority": 3},
+    "15m": {"weight": 0.1, "priority": 4}
+  },
+  "indicators": {
+    "rsi": {
+      "enabled": true,
+      "period": 14,
+      "overbought": 70,
+      "oversold": 30,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "macd": {
+      "enabled": true,
+      "fast_period": 12,
+      "slow_period": 26,
+      "signal_period": 9,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "ema_20": {
+      "enabled": true,
+      "period": 20,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "ema_50": {
+      "enabled": true,
+      "period": 50,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "ema_200": {
+      "enabled": true,
+      "period": 200,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "bollinger_bands": {
+      "enabled": true,
+      "period": 20,
+      "std_dev": 2,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "stochastic": {
+      "enabled": true,
+      "k_period": 14,
+      "d_period": 3,
+      "smooth_k": 3,
+      "overbought": 80,
+      "oversold": 20,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "adx": {
+      "enabled": true,
+      "period": 14,
+      "threshold": 25,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "ichimoku": {
+      "enabled": true,
+      "tenkan_period": 9,
+      "kijun_period": 26,
+      "senkou_b_period": 52,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "atr": {
+      "enabled": true,
+      "period": 14,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "vwap": {
+      "enabled": true,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "obv": {
+      "enabled": true,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "mfi": {
+      "enabled": true,
+      "period": 14,
+      "overbought": 80,
+      "oversold": 20,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "williams_r": {
+      "enabled": true,
+      "period": 14,
+      "overbought": -20,
+      "oversold": -80,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "parabolic_sar": {
+      "enabled": true,
+      "start": 0.02,
+      "increment": 0.02,
+      "max": 0.2,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "cci": {
+      "enabled": true,
+      "period": 20,
+      "overbought": 100,
+      "oversold": -100,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "keltner_channels": {
+      "enabled": true,
+      "ema_period": 20,
+      "atr_period": 10,
+      "multiplier": 2,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    },
+    "volume_profile": {
+      "enabled": true,
+      "num_bins": 20,
+      "timeframes": ["1D", "4H", "1H", "15m"]
+    }
+  },
+  "signal_threshold": 13,
+  "risk_management": {
+    "max_position_size": 1000,
+    "stop_loss_pct": 2.0,
+    "take_profit_pct": 4.0,
+    "max_daily_loss": 100,
+    "max_daily_trades": 50
+  },
+  "api": {
+    "exchange": "binance",
+    "testnet": true,
+    "rate_limit": 1200
+  }
+}

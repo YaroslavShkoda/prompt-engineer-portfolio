@@ -1,0 +1,668 @@
+{
+  "timestamp": "2025-08-25T12:26:04.631663",
+  "symbol": "XRPUSDT",
+  "timeframe_signals": {
+    "1D": {
+      "weight": 0.4,
+      "trend": {
+        "direction": "neutral",
+        "strength": 0.008980953833906158,
+        "slope_20": -0.007043323111154587,
+        "slope_50": 0.001937630722751571
+      },
+      "structure": {
+        "type": "ranging",
+        "swing_highs": [
+          [
+            8,
+            2.7619
+          ],
+          [
+            23,
+            2.9396
+          ],
+          [
+            40,
+            2.5469
+          ],
+          [
+            57,
+            2.1442
+          ],
+          [
+            64,
+            2.1598
+          ],
+          [
+            80,
+            2.2949
+          ],
+          [
+            95,
+            2.5829
+          ],
+          [
+            104,
+            2.4311
+          ],
+          [
+            122,
+            2.3211
+          ],
+          [
+            165,
+            3.5504
+          ],
+          [
+            181,
+            3.3197
+          ]
+        ],
+        "swing_lows": [
+          [
+            21,
+            2.1453
+          ],
+          [
+            31,
+            2.0216
+          ],
+          [
+            60,
+            1.7963
+          ],
+          [
+            70,
+            2.0619
+          ],
+          [
+            89,
+            2.1265
+          ],
+          [
+            99,
+            2.3531
+          ],
+          [
+            112,
+            2.1398
+          ],
+          [
+            118,
+            2.0936
+          ],
+          [
+            127,
+            2.1394
+          ],
+          [
+            135,
+            2.0172
+          ],
+          [
+            176,
+            2.7695
+          ]
+        ]
+      },
+      "levels": {
+        "support": [
+          2.9014,
+          3.1041,
+          2.9915,
+          2.8184,
+          2.7826
+        ],
+        "resistance": [
+          3.3342,
+          3.3512,
+          3.156,
+          3.1056,
+          3.128
+        ],
+        "fibonacci": [
+          3.6607,
+          3.3274208,
+          3.1212396,
+          2.9546,
+          2.7879604,
+          2.5507108,
+          2.2485
+        ]
+      },
+      "volume": {
+        "current_volume": 28710436.3,
+        "volume_ma": 154728922.7,
+        "relative_volume": 0.1855531325301472,
+        "volume_price_trend": 14650059.559787566,
+        "volume_spike": "False"
+      },
+      "indicator_signals": {
+        "rsi": "NEUTRAL",
+        "macd": "NEUTRAL",
+        "ema_20": "SHORT",
+        "ema_50": "LONG",
+        "ema_200": "LONG",
+        "bollinger_bands": "NEUTRAL",
+        "stochastic": "NEUTRAL",
+        "adx": "NEUTRAL",
+        "ichimoku": "NEUTRAL",
+        "atr": "LONG",
+        "vwap": "LONG",
+        "obv": "NEUTRAL",
+        "mfi": "NEUTRAL",
+        "williams_r": "NEUTRAL",
+        "parabolic_sar": "LONG",
+        "cci": "NEUTRAL",
+        "keltner_channels": "NEUTRAL",
+        "volume_profile": "LONG"
+      },
+      "weighted_signal": {
+        "direction": "NEUTRAL",
+        "confidence": 33.33333333333333,
+        "long_count": 6,
+        "short_count": 1,
+        "total_indicators": 18
+      }
+    },
+    "4H": {
+      "weight": 0.3,
+      "trend": {
+        "direction": "neutral",
+        "strength": 0.0034804527764849434,
+        "slope_20": 0.002783219780810242,
+        "slope_50": 0.0006972329956747014
+      },
+      "structure": {
+        "type": "ranging",
+        "swing_highs": [
+          [
+            9,
+            3.2261
+          ],
+          [
+            31,
+            3.2737
+          ],
+          [
+            49,
+            3.1549
+          ],
+          [
+            77,
+            3.0716
+          ],
+          [
+            96,
+            3.3762
+          ],
+          [
+            114,
+            3.2653
+          ],
+          [
+            124,
+            3.2888
+          ],
+          [
+            132,
+            3.3262
+          ],
+          [
+            145,
+            3.1232
+          ],
+          [
+            153,
+            3.1438
+          ],
+          [
+            172,
+            2.989
+          ],
+          [
+            185,
+            3.0744
+          ]
+        ],
+        "swing_lows": [
+          [
+            15,
+            3.0375
+          ],
+          [
+            44,
+            3.0518
+          ],
+          [
+            55,
+            2.9558
+          ],
+          [
+            65,
+            2.7695
+          ],
+          [
+            84,
+            2.9142
+          ],
+          [
+            111,
+            3.185
+          ],
+          [
+            119,
+            3.1295
+          ],
+          [
+            141,
+            3.0269
+          ],
+          [
+            157,
+            2.9639
+          ],
+          [
+            167,
+            2.8608
+          ],
+          [
+            182,
+            2.8056
+          ],
+          [
+            194,
+            3.0087
+          ]
+        ]
+      },
+      "levels": {
+        "support": [
+          2.7826,
+          2.9697,
+          3.0072,
+          2.9971,
+          2.9736
+        ],
+        "resistance": [
+          3.1056,
+          3.0756,
+          3.0886,
+          3.128,
+          3.0535
+        ],
+        "fibonacci": [
+          3.1472,
+          3.0611544000000004,
+          3.0079228000000002,
+          2.9649,
+          2.9218772,
+          2.8606244,
+          2.7826
+        ]
+      },
+      "volume": {
+        "current_volume": 2185557.0,
+        "volume_ma": 27217839.115000002,
+        "relative_volume": 0.08029869640883869,
+        "volume_price_trend": 328022.72214152524,
+        "volume_spike": "False"
+      },
+      "indicator_signals": {
+        "rsi": "NEUTRAL",
+        "macd": "NEUTRAL",
+        "ema_20": "LONG",
+        "ema_50": "LONG",
+        "ema_200": "SHORT",
+        "bollinger_bands": "NEUTRAL",
+        "stochastic": "NEUTRAL",
+        "adx": "NEUTRAL",
+        "ichimoku": "NEUTRAL",
+        "atr": "NEUTRAL",
+        "vwap": "SHORT",
+        "obv": "LONG",
+        "mfi": "NEUTRAL",
+        "williams_r": "NEUTRAL",
+        "parabolic_sar": "SHORT",
+        "cci": "NEUTRAL",
+        "keltner_channels": "NEUTRAL",
+        "volume_profile": "NEUTRAL"
+      },
+      "weighted_signal": {
+        "direction": "NEUTRAL",
+        "confidence": 16.666666666666664,
+        "long_count": 3,
+        "short_count": 3,
+        "total_indicators": 18
+      }
+    },
+    "1H": {
+      "weight": 0.2,
+      "trend": {
+        "direction": "neutral",
+        "strength": 0.0009936476742012702,
+        "slope_20": -0.0009500346600618048,
+        "slope_50": 4.361301413946528e-05
+      },
+      "structure": {
+        "type": "ranging",
+        "swing_highs": [
+          [
+            11,
+            3.1376
+          ],
+          [
+            18,
+            3.1438
+          ],
+          [
+            25,
+            3.1107
+          ],
+          [
+            46,
+            3.0822
+          ],
+          [
+            83,
+            2.9136
+          ],
+          [
+            94,
+            2.989
+          ],
+          [
+            117,
+            2.9136
+          ],
+          [
+            128,
+            2.871
+          ],
+          [
+            143,
+            3.0907
+          ],
+          [
+            153,
+            3.0644
+          ],
+          [
+            172,
+            3.0736
+          ],
+          [
+            189,
+            3.1099
+          ]
+        ],
+        "swing_lows": [
+          [
+            35,
+            2.9624
+          ],
+          [
+            54,
+            2.9902
+          ],
+          [
+            74,
+            2.8608
+          ],
+          [
+            82,
+            2.8674
+          ],
+          [
+            88,
+            2.8388
+          ],
+          [
+            126,
+            2.8331
+          ],
+          [
+            134,
+            2.8056
+          ],
+          [
+            150,
+            2.9939
+          ],
+          [
+            160,
+            3.0154
+          ],
+          [
+            182,
+            3.0087
+          ]
+        ]
+      },
+      "levels": {
+        "support": [
+          2.9971,
+          3.0106,
+          2.987,
+          3.0019,
+          2.9736
+        ],
+        "resistance": [
+          3.041,
+          3.128,
+          3.0474,
+          3.0397,
+          3.0535
+        ],
+        "fibonacci": [
+          3.128,
+          3.0915616,
+          3.0690192,
+          3.0507999999999997,
+          3.0325808,
+          3.0066416,
+          2.9736
+        ]
+      },
+      "volume": {
+        "current_volume": 2185557.0,
+        "volume_ma": 7901507.540000001,
+        "relative_volume": 0.27660000182699307,
+        "volume_price_trend": -21719.43714868925,
+        "volume_spike": "False"
+      },
+      "indicator_signals": {
+        "rsi": "NEUTRAL",
+        "macd": "NEUTRAL",
+        "ema_20": "SHORT",
+        "ema_50": "SHORT",
+        "ema_200": "LONG",
+        "bollinger_bands": "NEUTRAL",
+        "stochastic": "NEUTRAL",
+        "adx": "NEUTRAL",
+        "ichimoku": "NEUTRAL",
+        "atr": "NEUTRAL",
+        "vwap": "NEUTRAL",
+        "obv": "NEUTRAL",
+        "mfi": "NEUTRAL",
+        "williams_r": "NEUTRAL",
+        "parabolic_sar": "SHORT",
+        "cci": "NEUTRAL",
+        "keltner_channels": "NEUTRAL",
+        "volume_profile": "NEUTRAL"
+      },
+      "weighted_signal": {
+        "direction": "NEUTRAL",
+        "confidence": 16.666666666666664,
+        "long_count": 1,
+        "short_count": 3,
+        "total_indicators": 18
+      }
+    },
+    "15m": {
+      "weight": 0.1,
+      "trend": {
+        "direction": "bearish",
+        "strength": 0.0006132968620355061,
+        "slope_20": 0.0005300032224803796,
+        "slope_50": 8.329363955512647e-05
+      },
+      "structure": {
+        "type": "ranging",
+        "swing_highs": [
+          [
+            18,
+            3.072
+          ],
+          [
+            37,
+            3.0434
+          ],
+          [
+            93,
+            3.0736
+          ],
+          [
+            118,
+            3.0459
+          ],
+          [
+            146,
+            3.0361
+          ],
+          [
+            162,
+            3.1173
+          ],
+          [
+            178,
+            3.0355
+          ],
+          [
+            180,
+            3.0355
+          ],
+          [
+            193,
+            3.0443
+          ]
+        ],
+        "swing_lows": [
+          [
+            35,
+            3.0309
+          ],
+          [
+            48,
+            3.0135
+          ],
+          [
+            56,
+            3.011
+          ],
+          [
+            75,
+            3.0283
+          ],
+          [
+            103,
+            3.0454
+          ],
+          [
+            113,
+            3.0318
+          ],
+          [
+            130,
+            3.006
+          ],
+          [
+            144,
+            3.0121
+          ],
+          [
+            166,
+            3.0082
+          ],
+          [
+            175,
+            3.005
+          ],
+          [
+            184,
+            2.9777
+          ]
+        ]
+      },
+      "levels": {
+        "support": [
+          3.0093,
+          3.0019,
+          3.023,
+          2.9736,
+          3.0092
+        ],
+        "resistance": [
+          3.0393,
+          3.026,
+          3.0526,
+          3.0535,
+          3.0435
+        ],
+        "fibonacci": [
+          3.128,
+          3.0915616,
+          3.0690192,
+          3.0507999999999997,
+          3.0325808,
+          3.0066416,
+          2.9736
+        ]
+      },
+      "volume": {
+        "current_volume": 848016.5,
+        "volume_ma": 1561057.485,
+        "relative_volume": 0.5432320770685776,
+        "volume_price_trend": -12400.9132979946,
+        "volume_spike": "False"
+      },
+      "indicator_signals": {
+        "rsi": "NEUTRAL",
+        "macd": "SHORT",
+        "ema_20": "SHORT",
+        "ema_50": "SHORT",
+        "ema_200": "SHORT",
+        "bollinger_bands": "NEUTRAL",
+        "stochastic": "NEUTRAL",
+        "adx": "NEUTRAL",
+        "ichimoku": "NEUTRAL",
+        "atr": "NEUTRAL",
+        "vwap": "NEUTRAL",
+        "obv": "NEUTRAL",
+        "mfi": "NEUTRAL",
+        "williams_r": "NEUTRAL",
+        "parabolic_sar": "SHORT",
+        "cci": "NEUTRAL",
+        "keltner_channels": "NEUTRAL",
+        "volume_profile": "SHORT"
+      },
+      "weighted_signal": {
+        "direction": "NEUTRAL",
+        "confidence": 33.33333333333333,
+        "long_count": 0,
+        "short_count": 6,
+        "total_indicators": 18
+      }
+    }
+  },
+  "final_signal": {
+    "direction": "NEUTRAL",
+    "confidence": 0,
+    "total_long_signals": 0,
+    "total_short_signals": 0,
+    "total_signals": 0,
+    "threshold": 13,
+    "long_percentage": 0,
+    "short_percentage": 0
+  }
+}

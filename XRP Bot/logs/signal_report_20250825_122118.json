@@ -1,0 +1,171 @@
+{
+  "timestamp": "2025-08-25T12:21:18.695772",
+  "symbol": "XRPUSDT",
+  "timeframe_signals": {
+    "15m": {
+      "weight": 0.1,
+      "trend": {
+        "direction": "bearish",
+        "strength": 0.0006818682906069462,
+        "slope_20": 0.0005785746510518219,
+        "slope_50": 0.00010329363955512428
+      },
+      "structure": {
+        "type": "ranging",
+        "swing_highs": [
+          [
+            18,
+            3.072
+          ],
+          [
+            37,
+            3.0434
+          ],
+          [
+            93,
+            3.0736
+          ],
+          [
+            118,
+            3.0459
+          ],
+          [
+            146,
+            3.0361
+          ],
+          [
+            162,
+            3.1173
+          ],
+          [
+            178,
+            3.0355
+          ],
+          [
+            180,
+            3.0355
+          ],
+          [
+            193,
+            3.0443
+          ]
+        ],
+        "swing_lows": [
+          [
+            35,
+            3.0309
+          ],
+          [
+            48,
+            3.0135
+          ],
+          [
+            56,
+            3.011
+          ],
+          [
+            75,
+            3.0283
+          ],
+          [
+            103,
+            3.0454
+          ],
+          [
+            113,
+            3.0318
+          ],
+          [
+            130,
+            3.006
+          ],
+          [
+            144,
+            3.0121
+          ],
+          [
+            166,
+            3.0082
+          ],
+          [
+            175,
+            3.005
+          ],
+          [
+            184,
+            2.9777
+          ]
+        ]
+      },
+      "levels": {
+        "support": [
+          3.0093,
+          3.0019,
+          3.023,
+          2.9736,
+          3.0092
+        ],
+        "resistance": [
+          3.0393,
+          3.026,
+          3.0526,
+          3.0535,
+          3.0435
+        ],
+        "fibonacci": [
+          3.128,
+          3.0915616,
+          3.0690192,
+          3.0507999999999997,
+          3.0325808,
+          3.0066416,
+          2.9736
+        ]
+      },
+      "volume": {
+        "current_volume": 463420.4,
+        "volume_ma": 1541827.6800000002,
+        "relative_volume": 0.30056562481742444,
+        "volume_price_trend": -11259.734036376462,
+        "volume_spike": "False"
+      },
+      "indicator_signals": {
+        "rsi": "NEUTRAL",
+        "macd": "SHORT",
+        "ema_20": "SHORT",
+        "ema_50": "SHORT",
+        "ema_200": "SHORT",
+        "bollinger_bands": "NEUTRAL",
+        "stochastic": "NEUTRAL",
+        "adx": "NEUTRAL",
+        "ichimoku": "NEUTRAL",
+        "atr": "NEUTRAL",
+        "vwap": "NEUTRAL",
+        "obv": "NEUTRAL",
+        "mfi": "NEUTRAL",
+        "williams_r": "NEUTRAL",
+        "parabolic_sar": "SHORT",
+        "cci": "NEUTRAL",
+        "keltner_channels": "NEUTRAL",
+        "volume_profile": "SHORT"
+      },
+      "weighted_signal": {
+        "direction": "NEUTRAL",
+        "confidence": 33.33333333333333,
+        "long_count": 0,
+        "short_count": 6,
+        "total_indicators": 18
+      }
+    }
+  },
+  "final_signal": {
+    "direction": "NEUTRAL",
+    "confidence": 0,
+    "total_long_signals": 0,
+    "total_short_signals": 6,
+    "total_signals": 6,
+    "threshold": 13,
+    "long_percentage": 0.0,
+    "short_percentage": 0.0
+  }
+}
